@@ -43,6 +43,8 @@ android {
 
 dependencies {
 
+    val navversion = "2.7.3"
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,5 +58,11 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation (libs.lottie.compose)
+
+    //navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navversion")
+    implementation("androidx.navigation:navigation-vi-ktx:$navversion")
+    implementation("androidx.navigation:navigation-common-ktx:$navversion")
+
 
 }
