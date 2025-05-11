@@ -50,7 +50,7 @@ class FragmentA : Fragment() {
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     showToast("Autenticacion Exitosa")
-                    findNavController().navigate(R.id.action_fragmentA_to_test)
+                    findNavController().navigate(R.id.action_fragmentA_to_fragmentHome2)
                 }
 
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {

@@ -10,13 +10,15 @@
         android:name="com.univalle.dogappnew.view.fragments.FragmentA"
         android:label="fragment_a"
         tools:layout="@layout/fragment_a" >
+
         <action
-            android:id="@+id/action_fragmentA_to_test"
-            app:destination="@id/test" />
+            android:id="@+id/action_fragmentA_to_fragmentHome2"
+            app:destination="@id/fragmentHome2" />
     </fragment>
+
     <fragment
-        android:id="@+id/test"
-        android:name="com.univalle.dogappnew.view.fragments.Test"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" />
+        android:id="@+id/fragmentHome2"
+        android:name="com.univalle.dogappnew.view.fragments.FragmentHome"
+        android:label="FragmentHome"
+        tools:layout="@layout/fragment_home"/>
 </navigation>
