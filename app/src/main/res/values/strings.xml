@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">DogApp</string>
     <string name="title_H4_fragment_detallecita">Cory</string>
     <string name="toolbar_home">Administrador de citas</string>
+    <string name="toolbar_quotes">Nueva cita</string>
+    <string name="description">Volver</string>
 </resources>
