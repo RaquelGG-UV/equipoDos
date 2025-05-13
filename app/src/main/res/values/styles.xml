@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="ToolbarRoundedBottom" parent="">
-    <item name="cornerFamily">rounded</item>
-    <item name="cornerSizeTopLeft">0dp</item>
-    <item name="cornerSizeTopRight">0dp</item>
-    <item name="cornerSizeBottomLeft">50dp</item> <!-- puedes ajustar -->
-    <item name="cornerSizeBottomRight">50dp</item>
-</style>
-    ></resources>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">50dp</item> <!-- puedes ajustar -->
+        <item name="cornerSizeBottomRight">50dp</item>
+    </style>
+    <style name="CircleImageStyle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>
+
