@@ -6,4 +6,6 @@
     <string name="toolbar_home">Administrador de citas</string>
     <string name="toolbar_quotes">Nueva cita</string>
     <string name="description">Volver</string>
+    <string name="buttom_edit">Editar</string>
+    <string name="buttom_delete">Eliminar</string>
 </resources>

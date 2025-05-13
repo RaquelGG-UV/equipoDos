@@ -158,11 +158,11 @@
 
         <!-- Botón Eliminar -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEliminar"
+            android:id="@+id/btnEliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:contentDescription="hola"
+            android:contentDescription="@string/buttom_delete"
             android:layout_marginStart="36dp"
             android:layout_marginBottom="88dp"
             app:backgroundTint="@color/pink"
@@ -173,11 +173,12 @@
 
         <!-- Botón Editar -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEditar"
+            android:id="@+id/btnEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:tint="@color/white"
+            android:contentDescription="@string/buttom_edit"
             app:backgroundTint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

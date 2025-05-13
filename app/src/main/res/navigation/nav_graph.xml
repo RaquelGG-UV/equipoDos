@@ -20,5 +20,25 @@
         android:id="@+id/fragmentHome2"
         android:name="com.univalle.dogappnew.view.fragments.FragmentHome"
         android:label="FragmentHome"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_fragmentHome2_to_detalle_cita"
+            app:destination="@id/detalle_cita" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle_cita"
+        android:name="com.univalle.dogappnew.view.fragments.Detalle_cita"
+        android:label="Detalle_cita"
+        tools:layout="@layout/fragment_detalle_cita">
+        <action
+            android:id="@+id/action_detalle_cita_to_editar_cita"
+            app:destination="@id/editar_cita" />
+    </fragment>
+    <fragment
+        android:id="@+id/editar_cita"
+        android:name="com.univalle.dogappnew.view.fragments.Editar_cita"
+        android:label="Editar_cita"
+        tools:layout="@layout/fragment_editar_cita"/>
+
+
 </navigation>
