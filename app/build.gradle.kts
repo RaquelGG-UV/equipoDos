@@ -63,4 +63,8 @@ dependencies {
     implementation("androidx.navigation:navigation-common-ktx:$navversion")
 
 
+    //cardview
+    implementation("androidx.cardview:cardview:1.0.0")
+
+
 }
