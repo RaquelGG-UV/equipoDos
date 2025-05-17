@@ -69,4 +69,16 @@ dependencies {
     //RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.4.0")
 
+    //view model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("androidx.fragment:fragment-ktx:1.5.7")
+
+    //livedata
+    implementation("androidx.lifecycle:lifecycly-livedata-ktx:2.6.1")
+
+    
+
+
+
 }
