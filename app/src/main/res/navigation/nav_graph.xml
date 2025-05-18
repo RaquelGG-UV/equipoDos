@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_fragmentHome2_to_detalle_cita"
             app:destination="@id/detalle_cita" />
+        <action
+            android:id="@+id/action_fragmentHome2_to_fragmentNewAppointment"
+            app:destination="@id/fragmentNewAppointment" />
     </fragment>
     <fragment
         android:id="@+id/detalle_cita"
@@ -39,6 +42,11 @@
         android:name="com.univalle.dogappnew.view.fragments.Editar_cita"
         android:label="Editar_cita"
         tools:layout="@layout/fragment_editar_cita"/>
+    <fragment
+        android:id="@+id/fragmentNewAppointment"
+        android:name="com.univalle.dogappnew.view.fragments.FragmentNewAppointment"
+        android:label="FragmentNewAppointment"
+        tools:layout="@layout/fragment_new_appointment"/>
 
 
 </navigation>
