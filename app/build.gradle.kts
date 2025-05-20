@@ -1,7 +1,7 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id ("kotlin-kapt")
 }
 
 android {
@@ -53,10 +53,14 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.biometric.ktx)
     implementation(libs.androidx.databinding.runtime)
+    implementation("androidx.concurrent:concurrent-futures:1.2.0")
+    implementation("com.google.guava:guava:31.0.1-android")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.lottie.compose)
+    compileOnly("org.projectlombok:lombok:1.18.2")
+
 
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navversion")
@@ -78,5 +82,8 @@ dependencies {
     //API razas
     implementation ("com.android.volley:volley:1.2.1")
 
-
+    //room
+    implementation("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
 }
