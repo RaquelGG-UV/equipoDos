@@ -41,12 +41,20 @@
         android:id="@+id/editar_cita"
         android:name="com.univalle.dogappnew.view.fragments.Editar_cita"
         android:label="Editar_cita"
-        tools:layout="@layout/fragment_editar_cita"/>
+        tools:layout="@layout/fragment_editar_cita">
+        <action
+            android:id="@+id/action_editar_cita_to_detalle_cita"
+            app:destination="@id/detalle_cita" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentNewAppointment"
         android:name="com.univalle.dogappnew.view.fragments.FragmentNewAppointment"
         android:label="FragmentNewAppointment"
-        tools:layout="@layout/fragment_new_appointment"/>
+        tools:layout="@layout/fragment_new_appointment">
+        <action
+            android:id="@+id/action_fragmentNewAppointment_to_fragmentHome2"
+            app:destination="@id/fragmentHome2" />
+    </fragment>
 
 
 </navigation>

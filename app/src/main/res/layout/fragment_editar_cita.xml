@@ -46,57 +46,81 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Campo Nombre de la mascota con etiqueta externa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la mascota"
+                android:textSize="14sp"
+                android:textColor="@color/dark_grey"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etNombreMascota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de la mascota">
+                android:padding="12dp"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="48dp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNombreMascota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Campo Raza con etiqueta externa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raza"
+                android:textSize="14sp"
+                android:textColor="@color/dark_grey"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteRaza"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Raza"
-                android:layout_marginTop="12dp">
+                android:padding="12dp"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="48dp"/>
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteRaza"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:inputType="text"
-                    android:paddingVertical="12dp" />
+            <!-- Campo Nombre del propietario con etiqueta externa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del propietario"
+                android:textSize="14sp"
+                android:textColor="@color/dark_grey"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/etPropietario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre del propietario"
-                android:layout_marginTop="12dp">
+                android:padding="12dp"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="48dp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPropietario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Campo Teléfono con etiqueta externa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono"
+                android:textSize="14sp"
+                android:textColor="@color/dark_grey"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/etTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Teléfono"
-                android:layout_marginTop="12dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTelefono"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:padding="12dp"
+                android:inputType="phone"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="48dp"/>
 
             <!-- Botón Editar Cita -->
             <com.google.android.material.button.MaterialButton
@@ -114,5 +138,6 @@
                 app:backgroundTint="@color/pink" />
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
