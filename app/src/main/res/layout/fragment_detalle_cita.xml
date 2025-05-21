@@ -9,8 +9,7 @@
         android:background="@color/white"
         tools:context=".view.fragments.FragmentDetalleCita"
         >
-
-
+        
         <!-- Toolbar -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/toolbarCard"
@@ -179,7 +178,7 @@
             android:layout_margin="16dp"
             android:tint="@color/white"
             android:contentDescription="@string/buttom_edit"
-            app:backgroundTint="@color/black"
+            app:backgroundTint="@color/dark_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/twotone_edit_24"
