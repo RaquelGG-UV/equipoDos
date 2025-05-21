@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_detalle_cita_to_editar_cita"
             app:destination="@id/editar_cita" />
+        <action
+            android:id="@+id/action_detalle_cita_to_fragmentHome2"
+            app:destination="@id/fragmentHome2" />
     </fragment>
     <fragment
         android:id="@+id/editar_cita"
