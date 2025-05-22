@@ -4,10 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
         <include
             android:id="@+id/toolbarHome"
             layout="@layout/toolbar_home"
+            android:background="@color/white"
             />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/glOrient"
