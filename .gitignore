@@ -8,6 +8,8 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
+/.idea/deploymentTargetSelector.xml
+/.idea/betterCommentsSettings.xml
 /build
 /captures
 .externalNativeBuild
