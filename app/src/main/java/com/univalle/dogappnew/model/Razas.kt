@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Razas(
     @SerializedName("message")
-    val message:String
+    val message:List<String>
 )
