@@ -16,9 +16,9 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
     val context = getApplication<Application>()
     //private val appointmentRepository = AppointmentRepository(context)
 
-    private val _listRazas = MutableLiveData<MutableList<Razas>>()
+    private val _listRazas = MutableLiveData<List<String>>()
 
-    val listRazas:LiveData<MutableList<Razas>> = _listRazas
+    val listRazas:LiveData<List<String>> = _listRazas
 
     init {
         val dao = AppointmentDB.getDatabase(application).appointmentDao()

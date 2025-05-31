@@ -20,16 +20,15 @@ class AppointmentRepository(private val dao: AppointmentDao) {
 
     val allAppointments = dao.getAllAppointments()
 
-    suspend fun getRazas(): MutableList<Razas>{
+    suspend fun getRazas(): List<String>{
         return withContext(Dispatchers.IO){
             try{
                 val response = apiService.getRazas()
-                response
+                response.message
             }catch (e: Exception){
                 e.printStackTrace()
-                mutableListOf()
+                emptyList()
             }
-
         }
     }
 }
