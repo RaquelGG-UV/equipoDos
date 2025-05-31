@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET(END_POINT)
-    suspend fun getRazas(): MutableList<Razas>
+    suspend fun getRazas(): Razas
 }
