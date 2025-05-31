@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.FragmentNewAppointmentBinding
 import com.univalle.dogappnew.viewmodel.AppointmentViewModel
 import com.univalle.dogappnew.model.Appointment
@@ -22,7 +25,6 @@ class FragmentNewAppointment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Puedes manejar argumentos aquí si los necesitas
     }
 
     override fun onCreateView(
@@ -44,6 +46,7 @@ class FragmentNewAppointment : Fragment() {
             Log.d("FragmentNewAppointment", "Citas en BD: $list")
             Toast.makeText(requireContext(), "Citas en BD: ${list.size}", Toast.LENGTH_SHORT).show()
         }
+        autoComplateTextView()
 
         binding.btnGuardar.setOnClickListener {
             val nombre = binding.etNombreMascota.text.toString().trim()
@@ -59,6 +62,14 @@ class FragmentNewAppointment : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun autoComplateTextView(){
+        viewModel.getRazas()
+        viewModel.listRazas.observe(viewLifecycleOwner){razas ->
+            val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_dropdown_item_1line, razas)
+            binding.atRaza.setAdapter(adapter)
         }
     }
 
