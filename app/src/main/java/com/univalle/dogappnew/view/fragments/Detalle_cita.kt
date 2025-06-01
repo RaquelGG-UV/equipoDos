@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.FragmentDetalleCitaBinding
 
-
 class Detalle_cita : Fragment() {
 
     private lateinit var binding: FragmentDetalleCitaBinding
@@ -29,17 +28,22 @@ class Detalle_cita : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         calendar = Calendar.getInstance()
-        //controladores()
+
+        setupToolbar()
         nagivationFragmentDetallecita()
     }
 
-    private fun nagivationFragmentDetallecita(){
-        binding.btnEditar.setOnClickListener{
-            findNavController().navigate(R.id.action_detalle_cita_to_editar_cita)
+    private fun setupToolbar() {
+        // Botón de regreso en el toolbar - va al home
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_detalle_cita_to_fragmentHome2)
         }
-
-
     }
 
-
+    private fun nagivationFragmentDetallecita() {
+        // Botón de editar - va a editar cita
+        binding.btnEditar.setOnClickListener {
+            findNavController().navigate(R.id.action_detalle_cita_to_editar_cita)
+        }
+    }
 }
