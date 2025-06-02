@@ -11,6 +11,7 @@
     <string name="buttom_edit_h5">Editar Cita</string>
     <string name="txtGuardar">Guardar cita</string>
     <string-array name="symptoms">
+        <item>Sintomas</item>
         <item>Solo duerme</item>
         <item>No come</item>
         <item>Fractura extremidad</item>

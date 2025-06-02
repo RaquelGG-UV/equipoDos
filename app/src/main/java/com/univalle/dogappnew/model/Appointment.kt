@@ -8,5 +8,9 @@ data class Appointment(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val nombreMascota: String,
-    val raza: String
+    val raza: String,
+    val nombrePropietario: String = "",
+    val telefono: String = "",
+    val sintomas: String = ""
+
 )
