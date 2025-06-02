@@ -8,6 +8,7 @@
     <string name="description">Volver</string>
     <string name="buttom_edit">Editar</string>
     <string name="buttom_delete">Eliminar</string>
+    <string name="buttom_edit_h5">Editar Cita</string>
     <string name="txtGuardar">Guardar cita</string>
     <string-array name="symptoms">
         <item>Solo duerme</item>
