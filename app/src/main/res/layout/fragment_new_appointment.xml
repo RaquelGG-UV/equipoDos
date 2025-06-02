@@ -12,12 +12,13 @@
 
             />
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiNombreMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
             android:hint="Nombre de la Mascota"
             app:boxStrokeColor="#800080"
             app:hintTextColor="@color/dark_grey"
@@ -42,7 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Raza"
-            android:padding="19dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
             app:boxStrokeColor="#800080"
             app:hintTextColor="@color/dark_grey"
             app:boxBackgroundMode="outline"
@@ -61,10 +64,97 @@
                 android:textColor="@color/black"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:paddingTop="20dp"
+                android:paddingTop="16dp"
                 android:paddingBottom="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiNombrePropietario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
+            android:hint="Nombre del propietario"
+            app:boxStrokeColor="#800080"
+            app:hintTextColor="@color/dark_grey"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="2dp"
+            app:layout_constraintTop_toBottomOf="@id/tiRaza"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombrePropietario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
+            android:hint="Teléfono"
+            app:boxStrokeColor="#800080"
+            app:hintTextColor="@color/dark_grey"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="2dp"
+            app:layout_constraintTop_toBottomOf="@id/tiNombrePropietario"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiSintomas"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Síntomas"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="#800080"
+            app:endIconMode="dropdown_menu"
+            app:layout_constraintTop_toBottomOf="@id/tiTelefono"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/atSintomas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/black"
+                android:importantForAccessibility="yes"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink"
+            android:text="@string/txtGuardar"
+            app:icon="@drawable/save"
+            android:textColor="@color/dark_grey"
+            app:iconTint="@color/dark_grey"
+            app:layout_constraintTop_toBottomOf="@id/tiSintomas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnGuardar"
@@ -80,6 +170,8 @@
             app:tint="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 </layout>
