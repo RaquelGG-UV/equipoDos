@@ -88,6 +88,10 @@ class FragmentNewAppointment : Fragment() {
                 binding.atRaza.text?.clear()
                 binding.etNombrePropietario.text?.clear()
                 binding.etTelefono.text?.clear()
+
+                // Volver a establecer el valor por defecto en síntomas
+                val defaultSymptom = resources.getStringArray(R.array.symptoms)[0]
+                binding.atSintomas.setText(defaultSymptom, false)
             } else {
                 Toast.makeText(requireContext(), "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
             }
