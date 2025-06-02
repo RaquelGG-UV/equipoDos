@@ -8,4 +8,13 @@
     <string name="description">Volver</string>
     <string name="buttom_edit">Editar</string>
     <string name="buttom_delete">Eliminar</string>
+    <string name="txtGuardar">Guardar cita</string>
+    <string-array name="symptoms">
+        <item>Solo duerme</item>
+        <item>No come</item>
+        <item>Fractura extremidad</item>
+        <item>Tiene pulgas</item>
+        <item>Tiene garrapatas</item>
+        <item>Bota demasiado pelo</item>
+    </string-array>
 </resources>

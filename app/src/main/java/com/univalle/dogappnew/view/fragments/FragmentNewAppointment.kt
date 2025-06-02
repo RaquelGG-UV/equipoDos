@@ -47,6 +47,7 @@ class FragmentNewAppointment : Fragment() {
             Toast.makeText(requireContext(), "Citas en BD: ${list.size}", Toast.LENGTH_SHORT).show()
         }
         autoComplateTextView()
+        listsymptoms()
 
         binding.btnGuardar.setOnClickListener {
             val nombre = binding.etNombreMascota.text.toString().trim()
@@ -71,6 +72,13 @@ class FragmentNewAppointment : Fragment() {
             val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_dropdown_item_1line, razas)
             binding.atRaza.setAdapter(adapter)
         }
+    }
+
+    private fun listsymptoms(){
+        val listsymptoms: Array<String> = resources.getStringArray(R.array.symptoms)
+        val adapter: ArrayAdapter<String> =
+            ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, listsymptoms)
+        binding.atSintomas.setAdapter(adapter)
     }
 
     override fun onDestroyView() {
