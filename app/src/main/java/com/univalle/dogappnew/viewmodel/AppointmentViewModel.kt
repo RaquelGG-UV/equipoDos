@@ -70,4 +70,17 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
     }
+    private val _currentAppointment = MutableLiveData<Appointment?>()
+    val currentAppointment: LiveData<Appointment?> = _currentAppointment
+
+    // AÑADIR ESTE MÉTODO PARA OBTENER CITA POR ID
+    fun getAppointmentById(id: Int) {
+        viewModelScope.launch {
+            try {
+                _currentAppointment.value = repository.getAppointmentById(id)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

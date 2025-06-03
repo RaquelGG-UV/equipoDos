@@ -30,6 +30,12 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         }
     }
 
+    suspend fun getAppointmentById(id: Int): Appointment? {
+        return withContext(Dispatchers.IO) {
+            dao.getAppointmentById(id) //
+        }
+    }
+
 
     suspend fun getRazas(): List<String>{
         return withContext(Dispatchers.IO){

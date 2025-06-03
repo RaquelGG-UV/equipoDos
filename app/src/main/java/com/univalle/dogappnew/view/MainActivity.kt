@@ -1,6 +1,7 @@
 package com.univalle.dogappnew.view
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         // ! go back to the phone screen.
 
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         super.onCreate(savedInstanceState)
 
