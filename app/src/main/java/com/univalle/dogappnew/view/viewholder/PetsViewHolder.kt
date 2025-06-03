@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.ItemPetBinding
 import com.univalle.dogappnew.model.Appointment
+import android.os.Bundle
 
 class PetsViewHolder(binding: ItemPetBinding, navController: NavController) : RecyclerView.ViewHolder(binding.root) {
     val bindingItem = binding
@@ -22,7 +23,10 @@ class PetsViewHolder(binding: ItemPetBinding, navController: NavController) : Re
             .into(bindingItem.ivPicture)
 
         bindingItem.cvPets.setOnClickListener{
-           navController.navigate(R.id.action_fragmentHome2_to_detalle_cita)
+            val bundle = Bundle().apply {
+                putInt("appointmentId", pet.id)
+            }
+            navController.navigate(R.id.action_fragmentHome2_to_detalle_cita, bundle)
         }
     }
 

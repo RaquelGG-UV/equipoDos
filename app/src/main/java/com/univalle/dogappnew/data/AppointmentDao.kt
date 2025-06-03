@@ -15,10 +15,7 @@ interface AppointmentDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAppointment(appointment: Appointment)
 
-    //@Query("DELETE FROM appointments WHERE id = :id")
-    //fun deleteAppointment(id: Int)
-
-    //@Query("UPDATE appointments SET date = :date, time = :time, reason = :reason WHERE id = :id")
-    //fun updateAppointment(id: Int, date: String, time: String, reason: String)
-
+    @Query("SELECT * FROM appointments WHERE id = :id")
+    fun getAppointmentById(id: Int): Appointment?
 }
+    
