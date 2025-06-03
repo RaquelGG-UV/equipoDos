@@ -17,10 +17,10 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
     val context = getApplication<Application>()
 
     private val _listRazas = MutableLiveData<List<String>>()
-    private val _listPictures = MutableLiveData<List<String>>()
+    private val _listPictures = MutableLiveData<String>()
 
     val listRazas:LiveData<List<String>> = _listRazas
-    val listPictures:LiveData<List<String>> = _listPictures
+    val listPictures:LiveData<String> = _listPictures
 
     private val _listAppointments = MutableLiveData<MutableList<Appointment>>()
     val listAppointments: LiveData<MutableList<Appointment>> = _listAppointments
@@ -60,13 +60,14 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-//    fun getPicture(){
-//        viewModelScope.launch {
-//            try{
-//                _listPictures.value = repository.getPicture()
-//            }catch (e: Exception){
-//                e.printStackTrace()
-//            }
-//        }
-//    }
+    fun getPicture(raza: String){
+        viewModelScope.launch {
+
+            try{
+                _listPictures.value = repository.getImageByBreed(raza)
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 }

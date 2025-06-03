@@ -17,19 +17,12 @@ class AppointmentRepository(private val dao: AppointmentDao) {
     private var apiService2: ApiService2 = ApiUtils.getApiService2()
     //private var appoinmentDao: AppointmentDao = AppointmentDB.getDatabase(context).appointmentDao()
 
-    val allAppointments = dao.getAllAppointments()
 
     fun insert(appointment: Appointment) {
         Thread {
             dao.insertAppointment(appointment)
         }.start()
     }
-
-//    suspend fun getAllAppointments()MutableList<Appointment>{
-//        return withContext(Dispatchers.IO){
-//            appoinmentDao.getAllAppointments()
-//        }
-//    }
 
     suspend fun getAllAppointments(): MutableList<Appointment> {
         return withContext(Dispatchers.IO){
@@ -50,16 +43,16 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         }
     }
 
-//    suspend fun getPicture(): List<String>{
-//        return withContext(Dispatchers.IO){
-//            try{
-//                val response = apiService2.getPicture()
-//                response.message
-//            }catch (e: Exception){
-//                e.printStackTrace()
-//                emptyList()
-//            }
-//        }
-//    }
+    suspend fun getImageByBreed(breed: String): String {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = apiService2.getImageByBreed(breed.lowercase())
+                response.message // URL de la imagen
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ""
+            }
+        }
+    }
 
 }

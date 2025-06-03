@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.univalle.dogappnew.model.Appointment
 
-@Database(entities = [Appointment::class], version = 2, exportSchema = false)
+@Database(entities = [Appointment::class], version = 3, exportSchema = false)
 abstract class AppointmentDB : RoomDatabase() {
 
     abstract fun appointmentDao(): AppointmentDao

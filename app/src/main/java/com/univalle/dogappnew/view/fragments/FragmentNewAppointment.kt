@@ -67,10 +67,6 @@ class FragmentNewAppointment : Fragment() {
     }
 
     private fun saveAppointment(){
-        viewModel.repository.allAppointments.asLiveData().observe(viewLifecycleOwner) { list ->
-            Log.d("FragmentNewAppointment", "Citas en BD: $list")
-            Toast.makeText(requireContext(), "Citas en BD: ${list.size}", Toast.LENGTH_SHORT).show()
-        }
 
         binding.btnGuardar.setOnClickListener {
             val nombre = binding.etNombreMascota.text.toString().trim()
@@ -79,11 +75,27 @@ class FragmentNewAppointment : Fragment() {
             val telefonoPropietario = binding.etTelefono.text.toString().trim()
             val sintomasMascota = binding.atSintomas.text.toString().trim()
 
-            if (nombre.isNotEmpty() && raza.isNotEmpty() && nombrePropietarioAp.isNotEmpty() && telefonoPropietario.isNotEmpty() && sintomasMascota.isNotEmpty()) {
-                val appointment = Appointment(nombreMascota = nombre, raza = raza, nombrePropietario = nombrePropietarioAp, telefono = telefonoPropietario, sintomas = sintomasMascota)
-                viewModel.insertAppointment(appointment)
-                Toast.makeText(requireContext(), "Guardando cita...", Toast.LENGTH_SHORT).show()
-                // Limpiar campos
+
+                if (nombre.isNotEmpty() && raza.isNotEmpty() && nombrePropietarioAp.isNotEmpty() && telefonoPropietario.isNotEmpty() && sintomasMascota.isNotEmpty()) {
+//                val appointment = Appointment(nombreMascota = nombre, raza = raza, nombrePropietario = nombrePropietarioAp, telefono = telefonoPropietario, sintomas = sintomasMascota)
+//                viewModel.insertAppointment(appointment)
+//                Toast.makeText(requireContext(), "Guardando cita...", Toast.LENGTH_SHORT).show()
+
+                    viewModel.getPicture(raza)
+
+                    viewModel.listPictures.observe(viewLifecycleOwner) { imageUrl ->
+                        val appointment = Appointment(
+                            nombreMascota = nombre,
+                            raza = raza,
+                            nombrePropietario = nombrePropietarioAp,
+                            telefono = telefonoPropietario,
+                            sintomas = sintomasMascota,
+                            foto = imageUrl
+                        )
+                        viewModel.insertAppointment(appointment)
+                        Toast.makeText(requireContext(), "Guardando cita...", Toast.LENGTH_SHORT).show()
+                    }
+                    
                 binding.etNombreMascota.text?.clear()
                 binding.atRaza.text?.clear()
                 binding.etNombrePropietario.text?.clear()
