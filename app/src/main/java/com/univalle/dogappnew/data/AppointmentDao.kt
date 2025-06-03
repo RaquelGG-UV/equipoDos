@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppointmentDao {
     @Query("SELECT * FROM appointments")
-    fun getAllAppointments(): Flow<List<Appointment>>
+    fun getAllAppointments(): MutableList<Appointment>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAppointment(appointment: Appointment)

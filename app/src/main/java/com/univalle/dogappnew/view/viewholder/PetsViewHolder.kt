@@ -13,10 +13,11 @@ class PetsViewHolder(binding: ItemPetBinding, navController: NavController) : Re
     fun setItemPet(pet: Appointment) {
         bindingItem.tvId.text = pet.id.toString()
         bindingItem.tvName.text = pet.nombreMascota
-        bindingItem.tvSymptom.text = pet.raza
+        bindingItem.tvSymptom.text = pet.sintomas
+        // TODO cargar la imagen bindingItem.ivPicture
 
         bindingItem.cvPets.setOnClickListener{
-           navController.navigate(R.id.action_detalle_cita_to_fragmentHome2)
+           navController.navigate(R.id.action_fragmentHome2_to_detalle_cita)
         }
     }
 
