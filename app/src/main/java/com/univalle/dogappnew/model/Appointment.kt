@@ -11,6 +11,6 @@ data class Appointment(
     val raza: String,
     val nombrePropietario: String = "",
     val telefono: String = "",
-    val sintomas: String = ""
-
+    val sintomas: String = "",
+    val foto: String = ""
 )

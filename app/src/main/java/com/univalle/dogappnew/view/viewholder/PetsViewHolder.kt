@@ -2,6 +2,7 @@ package com.univalle.dogappnew.view.viewholder
 
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.ItemPetBinding
 import com.univalle.dogappnew.model.Appointment
@@ -14,7 +15,11 @@ class PetsViewHolder(binding: ItemPetBinding, navController: NavController) : Re
         bindingItem.tvId.text = pet.id.toString()
         bindingItem.tvName.text = pet.nombreMascota
         bindingItem.tvSymptom.text = pet.sintomas
-        // TODO cargar la imagen bindingItem.ivPicture
+        Glide.with(bindingItem.ivPicture.context)
+            .load(pet.foto)
+            .circleCrop() // Si quieres que sea circular
+            .placeholder(R.drawable.cory)
+            .into(bindingItem.ivPicture)
 
         bindingItem.cvPets.setOnClickListener{
            navController.navigate(R.id.action_fragmentHome2_to_detalle_cita)
