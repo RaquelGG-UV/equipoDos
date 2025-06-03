@@ -20,7 +20,7 @@ class PetsAdapter(private val listPets: MutableList<Appointment>, private val na
 
     override fun onBindViewHolder(holder: PetsViewHolder, position: Int) {
         val pet = listPets[position]
-        holder.setItemPet(pet)
+        holder.setItemPet(pet, position) 
     }
 
 }

@@ -17,5 +17,8 @@ interface AppointmentDao {
 
     @Query("SELECT * FROM appointments WHERE id = :id")
     fun getAppointmentById(id: Int): Appointment?
+
+    @Query("DELETE FROM appointments WHERE id = :id")
+    fun deleteAppointment(id: Int)
 }
     

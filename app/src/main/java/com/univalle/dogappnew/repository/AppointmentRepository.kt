@@ -36,6 +36,12 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         }
     }
 
+    fun deleteAppointment(id: Int) {
+        Thread {
+            dao.deleteAppointment(id)
+        }.start()
+    }
+
 
     suspend fun getRazas(): List<String>{
         return withContext(Dispatchers.IO){

@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.FragmentDetalleCitaBinding
 import com.univalle.dogappnew.viewmodel.AppointmentViewModel
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class Detalle_cita : Fragment() {
 
@@ -33,16 +35,18 @@ class Detalle_cita : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         calendar = Calendar.getInstance()
 
+
         appointmentId = arguments?.getInt("appointmentId", -1) ?: -1
+        val appointmentPosition = arguments?.getInt("appointmentPosition", 1) ?: 1
 
         viewModel = ViewModelProvider(this)[AppointmentViewModel::class.java]
 
         setupToolbar()
         nagivationFragmentDetallecita()
-        loadAppointmentData()
+        loadAppointmentData(appointmentPosition)
     }
 
-    private fun loadAppointmentData() {
+    private fun loadAppointmentData(position: Int) {
         if (appointmentId != -1) {
             viewModel.getAppointmentById(appointmentId)
 
@@ -55,23 +59,21 @@ class Detalle_cita : Fragment() {
                     binding.textPropietario.text = "Propietario: ${it.nombrePropietario}"
                     binding.textTelefono.text = "Teléfono: ${it.telefono}"
 
-                    binding.textTurno.text = "#${it.id}"
+                    // USAR POSICIÓN EN LUGAR DE ID PARA EL TURNO
+                    binding.textTurno.text = "#$position"
 
-
+                    // USAR LA IMAGEN ESPECÍFICA DE LA MASCOTA
                     if (!it.foto.isNullOrEmpty()) {
-
                         Glide.with(this)
                             .load(it.foto)
                             .placeholder(R.drawable.cory)
                             .error(R.drawable.cory)
                             .into(binding.imagenPerro)
                     } else {
-
                         binding.imagenPerro.setImageResource(R.drawable.cory)
                     }
                 }
             }
-
         }
     }
 
@@ -87,6 +89,25 @@ class Detalle_cita : Fragment() {
                 putInt("appointmentId", appointmentId)
             }
             findNavController().navigate(R.id.action_detalle_cita_to_editar_cita, bundle)
+        }
+
+
+        binding.btnEliminar.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Eliminar cita")
+                .setMessage("¿Estás seguro de eliminar esta cita?")
+                .setPositiveButton("Eliminar") { dialog, _ ->
+                    if (appointmentId != -1) {
+                        viewModel.deleteAppointment(appointmentId)
+                        findNavController().navigate(R.id.action_detalle_cita_to_fragmentHome2)
+                        Toast.makeText(requireContext(), "Cita eliminada", Toast.LENGTH_SHORT).show()
+                    }
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancelar") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 }
