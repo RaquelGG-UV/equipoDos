@@ -20,5 +20,8 @@ interface AppointmentDao {
 
     @Query("DELETE FROM appointments WHERE id = :id")
     fun deleteAppointment(id: Int)
+
+    @Query("UPDATE appointments SET nombreMascota = :nombreMascota, raza = :raza, nombrePropietario = :nombrePropietario, telefono = :telefono WHERE id = :id")
+    fun updateAppointment(id: Int, nombreMascota: String, raza: String, nombrePropietario: String, telefono: String)
 }
     

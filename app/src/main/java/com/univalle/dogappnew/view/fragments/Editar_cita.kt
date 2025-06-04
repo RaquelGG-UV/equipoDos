@@ -5,19 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.univalle.dogappnew.R
 import com.univalle.dogappnew.databinding.FragmentEditarCitaBinding
+import com.univalle.dogappnew.model.Appointment
+import com.univalle.dogappnew.viewmodel.AppointmentViewModel
 
 class Editar_cita : Fragment() {
 
     private lateinit var binding: FragmentEditarCitaBinding
+    private lateinit var viewModel: AppointmentViewModel
+    private var appointmentId: Int = -1
+    private var currentAppointment: Appointment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment using data binding
         binding = FragmentEditarCitaBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
@@ -26,26 +33,102 @@ class Editar_cita : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // OBTENER EL ID DE LA CITA A EDITAR
+        appointmentId = arguments?.getInt("appointmentId", -1) ?: -1
+
+        viewModel = ViewModelProvider(this)[AppointmentViewModel::class.java]
+
         setupToolbar()
         controladores()
         observadorViewModel()
+        loadAppointmentData()
+        setupRazasDropdown()
+    }
+
+    private fun loadAppointmentData() {
+        if (appointmentId != -1) {
+            viewModel.getAppointmentById(appointmentId)
+        }
+    }
+
+    private fun setupRazasDropdown() {
+        viewModel.getRazas()
     }
 
     private fun setupToolbar() {
-        // Botón de regreso en el toolbar - va al home
         binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_editar_cita_to_detalle_cita)
+            findNavController().navigateUp()
         }
     }
 
     private fun controladores() {
-        // Botón editar cita - regresa al detalle
         binding.btnEditarCita.setOnClickListener {
-            findNavController().navigate(R.id.action_editar_cita_to_detalle_cita)
+            saveChanges()
+        }
+    }
+
+    private fun saveChanges() {
+        val nombreMascota = binding.etNombreMascota.text.toString().trim()
+        val raza = binding.autoCompleteRaza.text.toString().trim()
+        val propietario = binding.etPropietario.text.toString().trim()
+        val telefono = binding.etTelefono.text.toString().trim()
+
+        // VALIDACIONES BÁSICAS
+        if (nombreMascota.isEmpty()) {
+            binding.tiNombreMascota.error = "Ingrese el nombre de la mascota"
+            return
+        }
+        if (raza.isEmpty()) {
+            binding.tiRaza.error = "Seleccione una raza"
+            return
+        }
+        if (propietario.isEmpty()) {
+            binding.tiPropietario.error = "Ingrese el nombre del propietario"
+            return
+        }
+
+
+        currentAppointment?.let { appointment ->
+            val updatedAppointment = appointment.copy(
+                nombreMascota = nombreMascota,
+                raza = raza,
+                nombrePropietario = propietario,
+                telefono = telefono
+
+            )
+
+
+            viewModel.updateAppointment(updatedAppointment)
+
+            Toast.makeText(requireContext(), "Cita actualizada", Toast.LENGTH_SHORT).show()
+
+            findNavController().navigateUp()
         }
     }
 
     private fun observadorViewModel() {
-        // Aquí puedes implementar observadores de LiveData si usas ViewModel
+
+        viewModel.currentAppointment.observe(viewLifecycleOwner) { appointment ->
+            appointment?.let {
+                currentAppointment = it
+                // CARGAR SOLO LOS 4 CAMPOS EDITABLES
+                binding.etNombreMascota.setText(it.nombreMascota)
+                binding.autoCompleteRaza.setText(it.raza)
+                binding.etPropietario.setText(it.nombrePropietario)
+                binding.etTelefono.setText(it.telefono)
+            }
+        }
+
+        
+        viewModel.listRazas.observe(viewLifecycleOwner) { razas ->
+            if (razas.isNotEmpty()) {
+                val adapter = ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    razas
+                )
+                binding.autoCompleteRaza.setAdapter(adapter)
+            }
+        }
     }
 }
