@@ -130,16 +130,29 @@ class Editar_cita : Fragment() {
         }
 
         currentAppointment?.let { appointment ->
-            // Obtener nueva imagen para la raza
-            viewModel.getImageByBreed(raza) { imageUrl ->
+            if (raza != appointment.raza) {
+                // Obtener nueva imagen si la raza cambio
+                viewModel.getImageByBreed(raza) { imageUrl ->
+                    val updatedAppointment = appointment.copy(
+                        nombreMascota = nombreMascota,
+                        raza = raza,
+                        nombrePropietario = propietario,
+                        telefono = telefono,
+                        foto = imageUrl
+                    )
+                    viewModel.updateAppointment(updatedAppointment)
+                    Toast.makeText(requireContext(), "Cita actualizada", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_editar_cita_to_fragmentHome2)
+                }
+            } else {
+                // Mantener la imagen original
                 val updatedAppointment = appointment.copy(
                     nombreMascota = nombreMascota,
                     raza = raza,
                     nombrePropietario = propietario,
                     telefono = telefono,
-                    foto = imageUrl
+                    foto = appointment.foto
                 )
-
                 viewModel.updateAppointment(updatedAppointment)
                 Toast.makeText(requireContext(), "Cita actualizada", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_editar_cita_to_fragmentHome2)
@@ -156,7 +169,7 @@ class Editar_cita : Fragment() {
                 binding.etPropietario.setText(it.nombrePropietario)
                 binding.etTelefono.setText(it.telefono)
 
-                // ✅ CONFIGURAR VALIDACIONES DESPUÉS DE CARGAR LOS DATOS
+
                 setupValidations()
             }
         }
@@ -173,3 +186,5 @@ class Editar_cita : Fragment() {
         }
     }
 }
+
+

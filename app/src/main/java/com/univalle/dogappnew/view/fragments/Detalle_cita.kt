@@ -59,7 +59,7 @@ class Detalle_cita : Fragment() {
                     binding.textPropietario.text = "Propietario: ${it.nombrePropietario}"
                     binding.textTelefono.text = "Teléfono: ${it.telefono}"
 
-                    // USAR POSICIÓN EN LUGAR DE ID PARA EL TURNO
+
                     binding.textTurno.text = "#$position"
 
                     // USAR LA IMAGEN ESPECÍFICA DE LA MASCOTA
