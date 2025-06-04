@@ -27,11 +27,28 @@
 
                     />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/loginapp"
-                    android:layout_marginBottom="60dp"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:src="@drawable/loginapp"
+                        android:layout_marginBottom="60dp"/>
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_margin="40dp"
+                        android:text="@string/app_name_home"
+                        android:fontFamily="@font/baloo"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        />
+                 </FrameLayout>
 
             </androidx.appcompat.widget.Toolbar>
 
