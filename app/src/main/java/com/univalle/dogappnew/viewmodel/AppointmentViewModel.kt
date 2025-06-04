@@ -91,7 +91,6 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
 
     fun updateAppointment(appointment: Appointment) {
         repository.updateAppointment(appointment)
-        // Actualizar la lista después de editar
         getAllAppointments()
     }
 

@@ -68,21 +68,20 @@ class Editar_cita : Fragment() {
                 val propietario = binding.etPropietario.text.toString().trim()
                 val telefono = binding.etTelefono.text.toString().trim()
 
-                // Verificar si todos los campos están llenos
+
                 val allFieldsFilled = nombre.isNotEmpty() && raza.isNotEmpty() &&
                         propietario.isNotEmpty() && telefono.isNotEmpty()
 
-                // Verificar si hay cambios reales
+
                 val hasChanges = nombre != appointment.nombreMascota ||
                         raza != appointment.raza ||
                         propietario != appointment.nombrePropietario ||
                         telefono != appointment.telefono
 
-                // Habilitar botón solo si hay cambios Y todos los campos están llenos
+
                 val shouldEnable = allFieldsFilled && hasChanges
                 binding.btnEditarCita.isEnabled = shouldEnable
 
-                // Cambiar color del texto
                 if (shouldEnable) {
                     binding.btnEditarCita.setTextColor(resources.getColor(android.R.color.white, null))
                     binding.btnEditarCita.setTypeface(null, android.graphics.Typeface.BOLD)
@@ -93,7 +92,7 @@ class Editar_cita : Fragment() {
             }
         }
 
-        // Escuchar cambios en los campos
+
         binding.etNombreMascota.addTextChangedListener { validateFields() }
         binding.autoCompleteRaza.addTextChangedListener { validateFields() }
         binding.etPropietario.addTextChangedListener { validateFields() }
@@ -131,7 +130,7 @@ class Editar_cita : Fragment() {
 
         currentAppointment?.let { appointment ->
             if (raza != appointment.raza) {
-                // Obtener nueva imagen si la raza cambio
+
                 viewModel.getImageByBreed(raza) { imageUrl ->
                     val updatedAppointment = appointment.copy(
                         nombreMascota = nombreMascota,
@@ -145,7 +144,7 @@ class Editar_cita : Fragment() {
                     findNavController().navigate(R.id.action_editar_cita_to_fragmentHome2)
                 }
             } else {
-                // Mantener la imagen original
+
                 val updatedAppointment = appointment.copy(
                     nombreMascota = nombreMascota,
                     raza = raza,
