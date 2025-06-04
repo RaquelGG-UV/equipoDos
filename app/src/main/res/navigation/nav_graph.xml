@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_editar_cita_to_detalle_cita"
             app:destination="@id/detalle_cita" />
+        <action
+            android:id="@+id/action_editar_cita_to_fragmentHome2"
+            app:destination="@id/fragmentHome2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNewAppointment"
