@@ -74,7 +74,10 @@ class AppointmentRepository(private val dao: AppointmentDao) {
                 appointment.nombreMascota,
                 appointment.raza,
                 appointment.nombrePropietario,
-                appointment.telefono
+                appointment.telefono,
+                appointment.foto
+
+
             )
         }.start()
     }

@@ -95,4 +95,13 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
         getAllAppointments()
     }
 
+    fun getImageByBreed(breed: String, callback: (String) -> Unit) {
+        viewModelScope.launch {
+            val imageUrl = repository.getImageByBreed(breed)
+            callback(imageUrl)
+        }
+    }
+
+
+
 }
