@@ -60,13 +60,6 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun getAllBreeds() {
-        viewModelScope.launch {
-            val breeds = repository.getAllBreeds()
-            _listRazas.value = breeds
-        }
-    }
-
     fun getPicture(raza: String){
         viewModelScope.launch {
 

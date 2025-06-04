@@ -51,7 +51,7 @@ class Editar_cita : Fragment() {
     }
 
     private fun setupRazasDropdown() {
-        viewModel.getAllBreeds()
+        viewModel.getRazas()
     }
 
     private fun setupToolbar() {
@@ -72,7 +72,7 @@ class Editar_cita : Fragment() {
                 val allFieldsFilled = nombre.isNotEmpty() && raza.isNotEmpty() &&
                         propietario.isNotEmpty() && telefono.isNotEmpty()
 
-
+                // Verificar si hay cambios reales
                 val hasChanges = nombre != appointment.nombreMascota ||
                         raza != appointment.raza ||
                         propietario != appointment.nombrePropietario ||
@@ -145,7 +145,7 @@ class Editar_cita : Fragment() {
                     findNavController().navigate(R.id.action_editar_cita_to_fragmentHome2)
                 }
             } else {
-                
+                // Mantener la imagen original
                 val updatedAppointment = appointment.copy(
                     nombreMascota = nombreMascota,
                     raza = raza,
