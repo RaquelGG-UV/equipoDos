@@ -95,7 +95,7 @@ class FragmentNewAppointment : Fragment() {
                         viewModel.insertAppointment(appointment)
                         Toast.makeText(requireContext(), "Guardando cita...", Toast.LENGTH_SHORT).show()
                     }
-                    
+
                 binding.etNombreMascota.text?.clear()
                 binding.atRaza.text?.clear()
                 binding.etNombrePropietario.text?.clear()
