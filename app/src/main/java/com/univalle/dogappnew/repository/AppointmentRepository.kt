@@ -67,4 +67,16 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         }
     }
 
+    fun updateAppointment(appointment: Appointment) {
+        Thread {
+            dao.updateAppointment(
+                appointment.id,
+                appointment.nombreMascota,
+                appointment.raza,
+                appointment.nombrePropietario,
+                appointment.telefono
+            )
+        }.start()
+    }
+
 }
