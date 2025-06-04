@@ -62,7 +62,7 @@ class Detalle_cita : Fragment() {
 
                     binding.textTurno.text = "#$position"
 
-                    // USAR LA IMAGEN ESPECÍFICA DE LA MASCOTA
+
                     if (!it.foto.isNullOrEmpty()) {
                         Glide.with(this)
                             .load(it.foto)

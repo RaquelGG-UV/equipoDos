@@ -32,7 +32,7 @@ class AppointmentRepository(private val dao: AppointmentDao) {
 
     suspend fun getAppointmentById(id: Int): Appointment? {
         return withContext(Dispatchers.IO) {
-            dao.getAppointmentById(id) //
+            dao.getAppointmentById(id) 
         }
     }
 
@@ -59,7 +59,7 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         return withContext(Dispatchers.IO) {
             try {
                 val response = apiService2.getImageByBreed(breed.lowercase())
-                response.message // URL de la imagen
+                response.message
             } catch (e: Exception) {
                 e.printStackTrace()
                 ""
