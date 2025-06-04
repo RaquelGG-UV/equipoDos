@@ -55,6 +55,20 @@ class AppointmentRepository(private val dao: AppointmentDao) {
         }
     }
 
+    suspend fun getAllBreeds(): List<String>{
+        return withContext(Dispatchers.IO){
+            try{
+                val response = apiService.getBreedsListAll()
+                response.message.keys.toList()
+            }catch (e: Exception){
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+    }
+
+
+
     suspend fun getImageByBreed(breed: String): String {
         return withContext(Dispatchers.IO) {
             try {
@@ -81,5 +95,7 @@ class AppointmentRepository(private val dao: AppointmentDao) {
             )
         }.start()
     }
+
+
 
 }
