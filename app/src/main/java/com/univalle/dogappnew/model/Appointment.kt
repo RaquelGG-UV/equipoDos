@@ -1,16 +1,14 @@
 package com.univalle.dogappnew.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "appointments")
 data class Appointment(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val nombreMascota: String,
-    val raza: String,
-    val nombrePropietario: String = "",
-    val telefono: String = "",
-    val sintomas: String = "",
-    val foto: String = ""
-)
+    var id: Int = 0,
+    var nombreMascota: String = "",
+    var raza: String = "",
+    var nombrePropietario: String = "",
+    var telefono: String = "",
+    var sintomas: String = "",
+    var foto: String = ""
+) {
+
+    constructor() : this(0, "", "", "", "", "", "")
+}

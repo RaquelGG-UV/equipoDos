@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "803463476242",
+    "project_id": "dogappnew",
+    "storage_bucket": "dogappnew.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803463476242:android:e71fc197584062c9c314cb",
+        "android_client_info": {
+          "package_name": "com.univalle.dogappnew"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWn2eVQyj_l6WE2xiw3sSqIFQ73HmhSdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
