@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id ("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -60,6 +61,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.lottie.compose)
     compileOnly("org.projectlombok:lombok:1.18.2")
+    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
 
     //navigation
@@ -82,11 +85,6 @@ dependencies {
     //API razas
     implementation ("com.android.volley:volley:1.2.1")
 
-    //room
-    implementation("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
-
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -96,6 +94,10 @@ dependencies {
 
     //livedata
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
 
 }
