@@ -75,8 +75,14 @@ class FragmentNewAppointment : Fragment() {
             val telefonoPropietario = binding.etTelefono.text.toString().trim()
             val sintomasMascota = binding.atSintomas.text.toString().trim()
 
+            if (sintomasMascota == "Síntomas") {
+                Toast.makeText(requireContext(), "Selecciona un síntoma", Toast.LENGTH_SHORT).show()
+            }
 
-                if (nombre.isNotEmpty() && raza.isNotEmpty() && nombrePropietarioAp.isNotEmpty() && telefonoPropietario.isNotEmpty() && sintomasMascota.isNotEmpty()) {
+
+
+
+                if (nombre.isNotEmpty() && raza.isNotEmpty() && nombrePropietarioAp.isNotEmpty() && telefonoPropietario.isNotEmpty() && sintomasMascota != "Sintomas") {
 //                val appointment = Appointment(nombreMascota = nombre, raza = raza, nombrePropietario = nombrePropietarioAp, telefono = telefonoPropietario, sintomas = sintomasMascota)
 //                viewModel.insertAppointment(appointment)
 //                Toast.makeText(requireContext(), "Guardando cita...", Toast.LENGTH_SHORT).show()
@@ -101,7 +107,8 @@ class FragmentNewAppointment : Fragment() {
                 binding.etNombrePropietario.text?.clear()
                 binding.etTelefono.text?.clear()
 
-                // Volver a establecer el valor por defecto en síntomas
+
+                    // Volver a establecer el valor por defecto en síntomas
                 val defaultSymptom = resources.getStringArray(R.array.symptoms)[0]
                 binding.atSintomas.setText(defaultSymptom, false)
             } else {

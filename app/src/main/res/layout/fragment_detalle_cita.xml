@@ -167,7 +167,7 @@
             android:layout_margin="16dp"
             android:tint="@color/white"
             android:contentDescription="@string/buttom_edit"
-            app:backgroundTint="@color/dark_blue"
+            app:backgroundTint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/twotone_edit_24"
