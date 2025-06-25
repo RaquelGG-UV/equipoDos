@@ -1,15 +1,15 @@
 package com.univalle.dogappnew.repository
 
-import com.univalle.dogappnew.data.local.FirestoreRepository
-import com.univalle.dogappnew.data.remote.ApiClient
+import com.univalle.dogappnew.database.FirestoreRepository
+import com.univalle.dogappnew.webservice.ApiUtils
 import com.univalle.dogappnew.model.Appointment
 
 class AppointmentRepository {
     private val firestoreRepository = FirestoreRepository()
-    private val dogApiService = ApiClient.dogApiService
-    private val breedsApiService = ApiClient.breedsApiService
-    private val razasApiService = ApiClient.razasApiService
+    private val apiService = ApiUtils.getApiService()
+    private val apiService2 = ApiUtils.getApiService2()
 
+    // CRUD Operations - Firebase
     suspend fun getAllAppointments(): List<Appointment> {
         return firestoreRepository.getAllAppointments()
     }
@@ -30,11 +30,12 @@ class AppointmentRepository {
         return firestoreRepository.getAppointmentById(id)
     }
 
+    // API Operations
     suspend fun getRazas(): List<String> {
         return try {
-            val response = razasApiService.getRazas()
+            val response = apiService.getAllBreeds()
             if (response.isSuccessful) {
-                response.body()?.message ?: emptyList()
+                response.body()?.message?.keys?.toList() ?: emptyList()
             } else {
                 emptyList()
             }
@@ -46,8 +47,12 @@ class AppointmentRepository {
 
     suspend fun getImageByBreed(breed: String): String {
         return try {
-            val response = dogApiService.getRandomImageByBreed(breed.lowercase())
-            response.message
+            val response = apiService2.getImageByBreed(breed.lowercase())
+            if (response.isSuccessful) {
+                response.body()?.message ?: "https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg"
+            } else {
+                "https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg"
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             "https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg"

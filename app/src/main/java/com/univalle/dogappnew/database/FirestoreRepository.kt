@@ -1,4 +1,4 @@
-package com.univalle.dogappnew.data.local
+package com.univalle.dogappnew.database
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.univalle.dogappnew.model.Appointment
