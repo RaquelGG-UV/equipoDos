@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/fragmentSplashWindow">
+    app:startDestination="@id/fragmentHome2">
+
+    <!-- Resto del código igual... -->
 
     <fragment
         android:id="@+id/fragmentA"
