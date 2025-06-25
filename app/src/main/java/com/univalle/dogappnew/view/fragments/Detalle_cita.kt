@@ -52,7 +52,7 @@ class Detalle_cita : Fragment() {
 
             viewModel.currentAppointment.observe(viewLifecycleOwner) { appointment ->
                 appointment?.let {
-                    // MOSTRAR DATOS DINÁMICOS
+
                     binding.toolbar.title = it.nombreMascota
                     binding.textRaza.text = it.raza
                     binding.textSintoma.text = it.sintomas
