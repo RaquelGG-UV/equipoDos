@@ -1,51 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragments.FragmentA"
-    android:background="@color/dark_grey">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="80sp"
-        android:layout_marginBottom="55dp"
-        android:layout_gravity="center"
-        android:fontFamily="@font/baloo"
-        tools:ignore="VisualLintOverlap" />
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <ImageView
-        android:layout_width="500dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginBottom="160dp"
-        android:paddingRight="70dp"
-        android:layout_marginStart="120dp"
-        android:src="@drawable/loginapp"
-        android:contentDescription="@null"
-        tools:ignore="VisualLintBounds" />
+        tools:context=".view.fragments.FragmentA"
+        android:background="@color/dark_grey">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animacion"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/anifin"
-        app:lottie_speed="1.5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="265dp" />
+        <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/titleDog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="65sp"
+            android:layout_marginBottom="55dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/baloo"
+            app:layout_constraintTop_toBottomOf="@id/petito"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="VisualLintOverlap" />
 
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/petito"
+            android:layout_width="297dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="192dp"
+            android:contentDescription="@null"
+            android:src="@drawable/loginapp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintBounds" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
+            android:hint="Ingresa tu email"
+            app:boxStrokeColor="@color/white"
+            app:hintTextColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="2dp"
+            app:layout_constraintTop_toBottomOf="@id/titleDog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="15"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="35dp"
+            android:hint="Ingresa tu contrasena"
+            app:boxStrokeColor="@color/white"
+            app:hintTextColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="2dp"
+            app:layout_constraintTop_toBottomOf="@id/tiEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:inputType="numberPassword"
+                android:textColor="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink"
+            android:textSize="17sp"
+            android:text="@string/loguear"
+            android:textColor="@color/dark_grey"
+            app:iconTint="@color/dark_grey"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toBottomOf="@id/tiPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/registrarse"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
