@@ -25,21 +25,6 @@ class FragmentA : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_a, container, false)
-
-        val lottieView = view.findViewById<LottieAnimationView>(R.id.animacion)
-
-        lottieView.setOnClickListener {
-            val biometricManager = BiometricManager.from(requireContext())
-            when (biometricManager.canAuthenticate(BIOMETRIC_STRONG)) {
-                BiometricManager.BIOMETRIC_SUCCESS -> {
-                    showBiometricPrompt()
-                }
-
-                BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> showToast("Su dispositivo no cuenta con biometría")
-                BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> showToast("Biometría no disponible")
-                BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> showToast("No hay biometría configurada")
-            }
-        }
         return view
     }
 

@@ -7,10 +7,12 @@
     <string name="app_name_home">DogApp</string>
     <string name="toolbar_quotes">Nueva cita</string>
     <string name="description">Volver</string>
+    <string name="loguear">Login</string>
     <string name="buttom_edit">Editar</string>
     <string name="buttom_delete">Eliminar</string>
     <string name="buttom_edit_h5">Editar Cita</string>
     <string name="txtGuardar">Guardar cita</string>
+    <string name="registrarse">Registrarse</string>
     <string-array name="symptoms">
         <item>Sintomas</item>
         <item>Solo duerme</item>
