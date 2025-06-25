@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/fragmentA">
+    app:startDestination="@id/fragmentSplashWindow">
 
     <fragment
         android:id="@+id/fragmentA"
@@ -60,6 +60,15 @@
         <action
             android:id="@+id/action_fragmentNewAppointment_to_fragmentHome2"
             app:destination="@id/fragmentHome2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSplashWindow"
+        android:name="com.univalle.dogappnew.view.fragments.FragmentSplashWindow"
+        android:label="FragmentSplashWindow"
+        tools:layout="@layout/fragment_splash_window">
+        <action
+            android:id="@+id/action_fragmentSplashWindow_to_fragmentA"
+            app:destination="@id/fragmentA" />
     </fragment>
 
 
