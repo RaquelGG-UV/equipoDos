@@ -1,67 +1,80 @@
 package com.univalle.dogappnew.view.fragments
 
 import android.annotation.SuppressLint
+
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.biometric.BiometricPrompt
-import androidx.core.content.ContextCompat
-import com.airbnb.lottie.LottieAnimationView
+import androidx.lifecycle.ViewModelProvider
 import com.univalle.dogappnew.R
 import androidx.navigation.fragment.findNavController
-
+import com.univalle.dogappnew.databinding.FragmentABinding
+import com.univalle.dogappnew.model.UserRequest
+import com.univalle.dogappnew.viewmodel.AppointmentViewModel
 
 
 class FragmentA : Fragment() {
 
+    private lateinit var binding: FragmentABinding
+    private lateinit var viewModel: AppointmentViewModel
+    private lateinit var sharedPreferences: SharedPreferences
     @SuppressLint("SwitchIntDef")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_a, container, false)
-        return view
+        binding = FragmentABinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    private fun showBiometricPrompt(){
-        val executor = ContextCompat.getMainExecutor(requireContext())
-        val biometricPrompt = BiometricPrompt(this,executor,
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    showToast("Autenticacion Exitosa")
-                    findNavController().navigate(R.id.action_fragmentA_to_fragmentHome2)
-                }
-
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    showToast("Error $")
-                }
-
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    showToast("Autenticacion fallida")
-                }
-            })
-
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Autenticacion Biometrica")
-            .setSubtitle("Usa tu huella")
-            .setNegativeButtonText("Cancelar")
-            .build()
-
-        biometricPrompt.authenticate(promptInfo)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(AppointmentViewModel::class.java)
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", 0)
+        setUp()
+        viewModelObservers()
     }
 
-    private fun showToast(message:String){
+    private fun viewModelObservers(){
+        observerIsRegister()
+    }
 
-        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
 
+    private fun setUp(){
+        binding.registrarse.setOnClickListener{
+            registerUser()
+        }
+    }
+
+    private fun registerUser(){
+        val email = binding.etEmail.text.toString()
+        val pass = binding.etPassword.text.toString()
+        val userRequest = UserRequest(email, pass)
+        if (email.isNotEmpty() && pass.isNotEmpty()){
+            viewModel.registerUser(userRequest)
+        }
+    }
+
+    private fun observerIsRegister(){
+        viewModel.isRegister.observe(viewLifecycleOwner){ userResponse ->
+            if (userResponse.isRegister){
+                Toast.makeText(context, userResponse.message, Toast.LENGTH_SHORT).show()
+                sharedPreferences.edit().putString("email", userResponse.email).apply()
+                goToHome()
+
+            }else {
+                Toast.makeText(context, userResponse.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun goToHome(){
+        findNavController().navigate(R.id.action_fragmentA_to_fragmentHome2)
     }
 }
 

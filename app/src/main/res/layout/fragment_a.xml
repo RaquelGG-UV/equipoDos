@@ -63,7 +63,6 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="15"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/white"
                 />
@@ -112,6 +111,7 @@
             />
 
         <TextView
+            android:id="@+id/registrarse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"

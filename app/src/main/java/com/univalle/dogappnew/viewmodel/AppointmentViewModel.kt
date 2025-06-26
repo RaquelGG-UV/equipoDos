@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.univalle.dogappnew.model.Appointment
+import com.univalle.dogappnew.model.UserRequest
+import com.univalle.dogappnew.model.UserResponse
 import com.univalle.dogappnew.repository.AppointmentRepository
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,9 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
     val listAppointments: LiveData<MutableList<Appointment>> = _listAppointments
     val progresState: LiveData<Boolean> = _progresState
     val currentAppointment: LiveData<Appointment?> = _currentAppointment
+
+    private val _isRegister = MutableLiveData<UserResponse>()
+    val isRegister: LiveData<UserResponse> = _isRegister
 
     fun getAllAppointments() {
         viewModelScope.launch {
@@ -124,6 +129,14 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
             } catch (e: Exception) {
                 e.printStackTrace()
                 callback("https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
+            }
+        }
+    }
+
+    fun registerUser(userRequest: UserRequest) {
+        viewModelScope.launch {
+            repository.registerUser(userRequest){ userResponse ->
+                _isRegister.value = userResponse
             }
         }
     }
