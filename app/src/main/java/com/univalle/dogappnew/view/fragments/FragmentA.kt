@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
 import com.univalle.dogappnew.R
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,7 @@ class FragmentA : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AppointmentViewModel::class.java)
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", 0)
+        sesion()
         setUp()
         viewModelObservers()
     }
@@ -48,6 +50,9 @@ class FragmentA : Fragment() {
     private fun setUp(){
         binding.registrarse.setOnClickListener{
             registerUser()
+        }
+        binding.btnLogin.setOnClickListener{
+            loginUser()
         }
     }
 
@@ -75,6 +80,30 @@ class FragmentA : Fragment() {
 
     private fun goToHome(){
         findNavController().navigate(R.id.action_fragmentA_to_fragmentHome2)
+    }
+
+    private fun loginUser(){
+        val email = binding.etEmail.text.toString()
+        val pass = binding.etPassword.text.toString()
+        viewModel.loginUser(email, pass){ isLogin ->
+            if (isLogin){
+                sharedPreferences.edit().putString("email", email).apply()
+                goToHome()
+            }else {
+                Toast.makeText(context, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    private fun sesion(){
+        val email = sharedPreferences.getString("email", null)
+        viewModel.sesion(email){isEnableView ->
+            if (isEnableView){
+                binding.contenedor.visibility = View.INVISIBLE
+                goToHome()
+            }
+        }
     }
 }
 
