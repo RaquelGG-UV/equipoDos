@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.univalle.dogappnew.model.Appointment
 import com.univalle.dogappnew.model.UserRequest
 import com.univalle.dogappnew.model.UserResponse
@@ -138,6 +139,30 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
             repository.registerUser(userRequest){ userResponse ->
                 _isRegister.value = userResponse
             }
+        }
+    }
+
+    fun loginUser(email: String, password: String, isLogin: (Boolean) -> Unit) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            FirebaseAuth.getInstance()
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        isLogin(true)
+                    } else {
+                        isLogin(false)
+                    }
+                }
+        } else {
+            isLogin(false)
+        }
+    }
+
+    fun sesion(email: String?, isEnableView: (Boolean) -> Unit) {
+        if (email != null) {
+            isEnableView(true)
+        } else {
+            isEnableView(false)
         }
     }
 }
